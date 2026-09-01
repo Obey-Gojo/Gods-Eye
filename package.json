@@ -1,0 +1,27 @@
+{
+  "name": "gods-eye",
+  "version": "1.0.0",
+  "description": "God’s Eye is a computer-vision integrity system that verifies the authenticity of data, AI models, and inference results in multi-contributor pipelines. Using hashing and blockchain-based records, it detects unauthorized changes and helps ensure every stage of the AI pipeline can be trusted.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Obey-Gojo/Gods-Eye.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Obey-Gojo/Gods-Eye/issues"
+  },
+  "homepage": "https://github.com/Obey-Gojo/Gods-Eye#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox-viem": "^5.0.7",
+    "@types/node": "^22.20.1",
+    "hardhat": "^3.15.0",
+    "typescript": "~6.0.3"
+  }
+}
