@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>God's Eye | AI Integrity Assurance</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>👁 GOD'S EYE</h1>
+            <p>Computer Vision Integrity Assurance System</p>
+        </header>
+
+
+        <main>
+
+            <!-- Upload Section -->
+            <section class="card upload-card">
+
+                <h2>Upload Image</h2>
+
+                <input type="file" id="imageUpload" accept="image/*">
+
+                <br><br>
+
+                <label for="contributor">Contributor:</label>
+
+                <select id="contributor">
+                    <option>Company A</option>
+                    <option>Company B</option>
+                    <option>Research Team</option>
+                </select>
+
+                <br><br>
+
+                <button id="analyzeBtn">
+                    ANALYZE IMAGE
+                </button>
+
+            </section>
+
+
+            <!-- Image Preview -->
+            <section class="card">
+
+                <h2>Image Preview</h2>
+
+                <div class="image-preview">
+
+                    <img id="previewImage" src="" alt="Image Preview">
+
+                    <p id="noImageText">
+                        No image selected
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- Results -->
+            <section class="card results-card">
+
+                <h2>AI Analysis Result</h2>
+
+                <div class="result-item">
+                    <span>Prediction</span>
+                    <strong id="prediction">Waiting...</strong>
+                </div>
+
+                <div class="result-item">
+                    <span>Confidence</span>
+                    <strong id="confidence">--</strong>
+                </div>
+
+                <hr>
+
+                <h2>Integrity Verification</h2>
+
+                <div class="integrity-item">
+                    <span>📷 Image Integrity</span>
+                    <strong id="imageIntegrity">Waiting...</strong>
+                </div>
+
+                <div class="integrity-item">
+                    <span>🤖 Model Integrity</span>
+                    <strong id="modelIntegrity">Waiting...</strong>
+                </div>
+
+                <div class="integrity-item">
+                    <span>🧠 Inference Integrity</span>
+                    <strong id="inferenceIntegrity">Waiting...</strong>
+                </div>
+
+            </section>
+
+
+            <!-- Overall Status -->
+            <section class="card status-card">
+
+                <h2>Overall System Status</h2>
+
+                <div id="overallStatus" class="status waiting">
+
+                    WAITING FOR ANALYSIS
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
