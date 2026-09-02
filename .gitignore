@@ -1,0 +1,28 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+.venv/
+
+# YOLO generated results
+runs/
+
+# Environment/secrets
+.env
+.env.*
+
+# Generated output
+data/output/
+
+# Python testing/cache
+.pytest_cache/
+.mypy_cache/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
