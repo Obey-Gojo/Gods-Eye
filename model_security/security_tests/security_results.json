@@ -1,0 +1,20 @@
+{
+    "model": "tamper_test.pt",
+    "model_integrity": {
+        "status": "TAMPERED",
+        "score": 0
+    },
+    "behavior": {
+        "detection_stability": 91.0,
+        "average_confidence_change": 6.71,
+        "score": 81.17
+    },
+    "anomaly_screening": {
+        "normal_tests": 1,
+        "attention_tests": 3,
+        "suspicious_tests": 0,
+        "score": 70.0
+    },
+    "final_security_score": 46.47,
+    "final_status": "TAMPERED"
+}

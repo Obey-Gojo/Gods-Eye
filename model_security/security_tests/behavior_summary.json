@@ -1,0 +1,34 @@
+{
+    "brightness": {
+        "images_compared": 25,
+        "detection_changes": 1,
+        "detection_stability": 96.0,
+        "average_confidence_change": 3.767562286446833,
+        "median_confidence_change": 2.031879201410551,
+        "maximum_confidence_change": 18.798312857721005
+    },
+    "resize": {
+        "images_compared": 25,
+        "detection_changes": 4,
+        "detection_stability": 84.0,
+        "average_confidence_change": 7.561035417285556,
+        "median_confidence_change": 5.084098987241649,
+        "maximum_confidence_change": 39.694458472360864
+    },
+    "compression": {
+        "images_compared": 25,
+        "detection_changes": 3,
+        "detection_stability": 88.0,
+        "average_confidence_change": 8.163892224190656,
+        "median_confidence_change": 5.255251354654134,
+        "maximum_confidence_change": 34.69764723301196
+    },
+    "noise": {
+        "images_compared": 25,
+        "detection_changes": 1,
+        "detection_stability": 96.0,
+        "average_confidence_change": 7.36358200391922,
+        "median_confidence_change": 3.355653339401398,
+        "maximum_confidence_change": 38.7884725257914
+    }
+}

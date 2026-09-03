@@ -1,0 +1,41 @@
+{
+    "overall_status": "ATTENTION",
+    "tests": {
+        "brightness": {
+            "detection_stability": 96.0,
+            "average_confidence_change": 3.77,
+            "maximum_confidence_change": 18.8,
+            "status": "NORMAL",
+            "anomaly_flags": []
+        },
+        "resize": {
+            "detection_stability": 84.0,
+            "average_confidence_change": 7.56,
+            "maximum_confidence_change": 39.69,
+            "status": "ATTENTION",
+            "anomaly_flags": [
+                "MODERATE_DETECTION_CHANGE",
+                "HIGH_SINGLE_CASE_CHANGE"
+            ]
+        },
+        "compression": {
+            "detection_stability": 88.0,
+            "average_confidence_change": 8.16,
+            "maximum_confidence_change": 34.7,
+            "status": "ATTENTION",
+            "anomaly_flags": [
+                "MODERATE_DETECTION_CHANGE",
+                "HIGH_SINGLE_CASE_CHANGE"
+            ]
+        },
+        "noise": {
+            "detection_stability": 96.0,
+            "average_confidence_change": 7.36,
+            "maximum_confidence_change": 38.79,
+            "status": "ATTENTION",
+            "anomaly_flags": [
+                "HIGH_SINGLE_CASE_CHANGE"
+            ]
+        }
+    }
+}
