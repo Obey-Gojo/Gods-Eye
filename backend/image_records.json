@@ -1,9 +1,101 @@
 [
     {
         "image_id": "IMG001",
-        "filename": "car.jpg",
-        "contributor": "company A",
-        "timestamp": "2026-09-01T16:03:19.643948",
-        "hash": "50d4d7275bbf0bf09877179b3ddbff111f359b2578d2492d667db31a89950a70"
+        "filename": "1788516264603_car.jpg",
+        "contributor": "sree",
+        "timestamp": "2026-09-04T15:34:24.885510",
+        "hash": "313ec78c44bf9da6f847aef9608352799dea5007f201dc3fb1c1471a51cd361f",
+        "phash": "be3e81c16b0f8c3c",
+        "saved_path": "C:\\Users\\deepi\\Downloads\\ai_integrity_dashboard\\backend\\uploads\\1788516264603_car.jpg"
+    },
+    {
+        "image_id": "IMG002",
+        "filename": "1788519669851_OIP.jpg",
+        "contributor": "company z",
+        "timestamp": "2026-09-04T16:31:10.217609",
+        "hash": "fac4cadb6740ba7b8e2e484ee0aee77e3eff4db55f991c3b7cff976b0336bb89",
+        "phash": "c9878b6f564843d3",
+        "saved_path": "C:\\Users\\deepi\\Downloads\\ai_integrity_dashboard\\backend\\uploads\\1788519669851_OIP.jpg"
+    },
+    {
+        "image_id": "IMG003",
+        "filename": "1788523806888_photo-1614200179396-2bdb77ebf81b.avif",
+        "contributor": "company",
+        "timestamp": "2026-09-04T17:40:07.289149",
+        "hash": "f882a63547e325a47531ac7f34b93bc41893d0314a3e3b7f49c5f38841fcd79b",
+        "phash": "93d3b96ce02745ac",
+        "saved_path": "C:\\Users\\deepi\\Downloads\\ai_integrity_dashboard\\backend\\uploads\\1788523806888_photo-1614200179396-2bdb77ebf81b.avif"
+    },
+    {
+        "image_id": "IMG004",
+        "filename": "1788524050645_white-convertible-car-isolated-white-vector_53876-66815.avif",
+        "contributor": "sreehsri",
+        "timestamp": "2026-09-04T17:44:10.727187",
+        "hash": "da24b25d5836a2fcc8c4c086701ec72e0acdfc389a9f005228e8e81a78f8aac6",
+        "phash": "bec1813eda3169e2",
+        "saved_path": "C:\\Users\\deepi\\Downloads\\ai_integrity_dashboard\\backend\\uploads\\1788524050645_white-convertible-car-isolated-white-vector_53876-66815.avif"
+    },
+    {
+        "image_id": "IMG005",
+        "filename": "1788524846223_car-49278_640.jpg",
+        "contributor": "sree",
+        "timestamp": "2026-09-04T17:57:26.347008",
+        "hash": "bf61e11ec00b4e44be6dddf11fc9f4c555453af64101d487bc017578e2ed479f",
+        "phash": "fa95857a98653686",
+        "saved_path": "C:\\Users\\deepi\\Downloads\\ai_integrity_dashboard\\backend\\uploads\\1788524846223_car-49278_640.jpg"
+    },
+    {
+        "image_id": "IMG006",
+        "filename": "1788525092631_Sky-Blue-Colored-Car-Wallpaper-for-Download.jpg",
+        "contributor": "sree",
+        "timestamp": "2026-09-04T18:01:32.891941",
+        "hash": "fcd973294c15f8a9e4c9edf0c617762aa880de1ae04249ef0de75dcea9a5bc5b",
+        "phash": "e7c4986b40366fd8",
+        "saved_path": "C:\\Users\\deepi\\Downloads\\ai_integrity_dashboard\\backend\\uploads\\1788525092631_Sky-Blue-Colored-Car-Wallpaper-for-Download.jpg"
+    },
+    {
+        "image_id": "IMG007",
+        "filename": "1788525436489_auto-2179220_640.jpg",
+        "contributor": "sree",
+        "timestamp": "2026-09-04T18:07:16.700484",
+        "hash": "15e8f6d7ea7ab942907a350f1ef56b85298e416fada49670463daf6d33ab39cf",
+        "phash": "d812bf64943bb463",
+        "saved_path": "C:\\Users\\deepi\\Downloads\\ai_integrity_dashboard\\backend\\uploads\\1788525436489_auto-2179220_640.jpg"
+    },
+    {
+        "image_id": "IMG008",
+        "filename": "1788525559714_images.jpeg",
+        "contributor": "sree",
+        "timestamp": "2026-09-04T18:09:19.947611",
+        "hash": "ec6242068fc2cd293521863d823be57ff314a5fae1a51ca0b3ebb8d0840a6d17",
+        "phash": "96666c9743483d6d",
+        "saved_path": "C:\\Users\\deepi\\Downloads\\ai_integrity_dashboard\\backend\\uploads\\1788525559714_images.jpeg"
+    },
+    {
+        "image_id": "IMG009",
+        "filename": "1788525757951_modern-car-captured-in-close-upgraphy-with-precision-and-innovation-free-photo.jpg",
+        "contributor": "sree",
+        "timestamp": "2026-09-04T18:12:38.154761",
+        "hash": "f00ac630b6cdea04cfb21ea9a0a5d7bcec895fc45b4981af2c5e3c167a393de7",
+        "phash": "e9c1dbf8867e1881",
+        "saved_path": "C:\\Users\\deepi\\Downloads\\ai_integrity_dashboard\\backend\\uploads\\1788525757951_modern-car-captured-in-close-upgraphy-with-precision-and-innovation-free-photo.jpg"
+    },
+    {
+        "image_id": "IMG010",
+        "filename": "1788525879786_images_(1).jpeg",
+        "contributor": "sree",
+        "timestamp": "2026-09-04T18:14:40.120673",
+        "hash": "b42c4b13b5be9ea8e3cc4479d5934a425d02e9d38b0645851d91462bb49bb59c",
+        "phash": "9980a68f99d47e2b",
+        "saved_path": "C:\\Users\\deepi\\Downloads\\ai_integrity_dashboard\\backend\\uploads\\1788525879786_images_(1).jpeg"
+    },
+    {
+        "image_id": "IMG011",
+        "filename": "1788525966975_images.jpeg",
+        "contributor": "sree",
+        "timestamp": "2026-09-04T18:16:07.249355",
+        "hash": "acfaf0610de9c6289de2a246f62cd591186bc5aaaa0ac3e50e4bced66712d0bd",
+        "phash": "ea15c67a9b55a846",
+        "saved_path": "C:\\Users\\deepi\\Downloads\\ai_integrity_dashboard\\backend\\uploads\\1788525966975_images.jpeg"
     }
 ]

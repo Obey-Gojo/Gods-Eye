@@ -1,125 +1,462 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="God's Eye — AI Computer Vision & Blockchain Data Integrity Assurance Platform for national security, insurance fraud defense, and law enforcement evidence provenance." />
+  <title>GOD'S EYE // AI Integrity Assurance Architecture</title>
 
-    <title>God's Eye | AI Integrity Assurance</title>
+  <!-- Google Fonts: Inter + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-   <link rel="stylesheet" href="/static/style.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+
+  <link rel="stylesheet" href="/static/style.css" />
+
+  <style>
+    /* Evidence thumbnail and modal inspection styles */
+    .audit-thumb {
+      width: 44px;
+      height: 44px;
+      border-radius: 6px;
+      object-fit: cover;
+      border: 1px solid #1e293b;
+      cursor: pointer;
+      display: block;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+      background: #0b1329;
+    }
+    .audit-thumb:hover {
+      transform: scale(1.12);
+      border-color: #38bdf8;
+    }
+    .evidence-modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: rgba(3, 7, 18, 0.88);
+      backdrop-filter: blur(6px);
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      cursor: pointer;
+      padding: 20px;
+    }
+    .evidence-modal-img {
+      max-width: 90%;
+      max-height: 78vh;
+      border-radius: 8px;
+      border: 2px solid #38bdf8;
+      box-shadow: 0 0 35px rgba(56, 189, 248, 0.35);
+      object-fit: contain;
+      background: #020617;
+    }
+    .evidence-modal-meta {
+      margin-top: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: #f8fafc;
+      text-align: center;
+    }
+  </style>
 </head>
-
 <body>
+  <!-- Ambient background grid + glow -->
+  <div class="bg-layer" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow--cyan"></div>
+    <div class="bg-glow bg-glow--emerald"></div>
+    <div class="bg-scanline"></div>
+  </div>
 
-    <div class="container">
-
-        <header>
-            <h1>👁 GOD'S EYE</h1>
-            <p>Computer Vision Integrity Assurance System</p>
-        </header>
-
-
-        <main>
-
-            <!-- Upload Section -->
-            <section class="card upload-card">
-
-                <h2>Upload Image</h2>
-
-                <input type="file" id="imageUpload" accept="image/*">
-
-                <br><br>
-
-                <label for="contributor">Contributor:</label>
-
-                <select id="contributor">
-                    <option>Company A</option>
-                    <option>Company B</option>
-                    <option>Research Team</option>
-                </select>
-
-                <br><br>
-
-                <button id="analyzeBtn">
-                    ANALYZE IMAGE
-                </button>
-
-            </section>
-
-
-            <!-- Image Preview -->
-            <section class="card">
-
-                <h2>Image Preview</h2>
-
-                <div class="image-preview">
-
-                    <img id="previewImage" src="" alt="Image Preview">
-
-                    <p id="noImageText">
-                        No image selected
-                    </p>
-
-                </div>
-
-            </section>
-
-
-            <!-- Results -->
-            <section class="card results-card">
-
-                <h2>AI Analysis Result</h2>
-
-                <div class="result-item">
-                    <span>Prediction</span>
-                    <strong id="prediction">Waiting...</strong>
-                </div>
-
-                <div class="result-item">
-                    <span>Confidence</span>
-                    <strong id="confidence">--</strong>
-                </div>
-
-                <hr>
-
-                <h2>Integrity Verification</h2>
-
-                <div class="integrity-item">
-                    <span>📷 Image Integrity</span>
-                    <strong id="imageIntegrity">Waiting...</strong>
-                </div>
-
-                <div class="integrity-item">
-                    <span>🤖 Model Integrity</span>
-                    <strong id="modelIntegrity">Waiting...</strong>
-                </div>
-
-                <div class="integrity-item">
-                    <span>🧠 Inference Integrity</span>
-                    <strong id="inferenceIntegrity">Waiting...</strong>
-                </div>
-
-            </section>
-
-
-            <!-- Overall Status -->
-            <section class="card status-card">
-
-                <h2>Overall System Status</h2>
-
-                <div id="overallStatus" class="status waiting">
-
-                    WAITING FOR ANALYSIS
-
-                </div>
-
-            </section>
-
-        </main>
-
+  <!-- ============ HEADER / TOP BAR ============ -->
+  <header class="topbar" role="banner">
+    <div class="topbar__brand">
+      <div class="brand-mark" aria-hidden="true">
+        <i data-lucide="scan-eye"></i>
+      </div>
+      <div class="brand-copy">
+        <h1 class="brand-title">
+          GOD'S EYE <span class="brand-sep">//</span>
+          <span class="brand-sub">AI INTEGRITY ASSURANCE ARCHITECTURE</span>
+        </h1>
+        <p class="brand-tag">Computer Vision &amp; Blockchain Provenance · National Security Grade</p>
+      </div>
     </div>
 
+    <div class="topbar__status" role="status" aria-label="System status">
+      <span class="status-pill status-pill--active">
+        <span class="dot dot--pulse"></span>
+        <i data-lucide="server"></i>
+        Node: EVM Localhost:8545 <b>[Active]</b>
+      </span>
+      <span class="status-pill">
+        <i data-lucide="cpu"></i>
+        Inference Engine: <b>YOLOv11n</b>
+      </span>
+      <span class="status-pill">
+        <i data-lucide="fingerprint"></i>
+        Tamper Detector: <b>pHash Hamming-8</b>
+      </span>
+    </div>
+  </header>
 
-    <script src="/static/script.js" defer></script>
+  <!-- ============ PIPELINE TELEMETRY BAR ============ -->
+  <section class="pipeline" aria-label="Forensic pipeline telemetry">
+    <div class="pipeline__label">
+      <i data-lucide="git-branch"></i>
+      <span>FORENSIC PIPELINE TELEMETRY</span>
+    </div>
+    <ol class="stepper" id="stepper">
+      <li class="step" data-step="1" data-key="image_integrity">
+        <div class="step__node"><span class="step__idx">1</span><i data-lucide="shield-check" class="step__ico"></i></div>
+        <div class="step__meta">
+          <span class="step__title">Data Integrity &amp; pHash</span>
+          <span class="step__desc">SHA-256 · Perceptual Hash</span>
+        </div>
+      </li>
+      <li class="step__link" aria-hidden="true"></li>
+      <li class="step" data-step="2" data-key="result_integrity">
+        <div class="step__node"><span class="step__idx">2</span><i data-lucide="car" class="step__ico"></i></div>
+        <div class="step__meta">
+          <span class="step__title">YOLOv11 Vehicle CV</span>
+          <span class="step__desc">Object Detection Inference</span>
+        </div>
+      </li>
+      <li class="step__link" aria-hidden="true"></li>
+      <li class="step" data-step="3" data-key="model_integrity">
+        <div class="step__node"><span class="step__idx">3</span><i data-lucide="lock" class="step__ico"></i></div>
+        <div class="step__meta">
+          <span class="step__title">Model Weight Security</span>
+          <span class="step__desc">Weights Attestation</span>
+        </div>
+      </li>
+      <li class="step__link" aria-hidden="true"></li>
+      <li class="step" data-step="4" data-key="blockchain_record">
+        <div class="step__node"><span class="step__idx">4</span><i data-lucide="link" class="step__ico"></i></div>
+        <div class="step__meta">
+          <span class="step__title">EVM Blockchain Ledger</span>
+          <span class="step__desc">Immutable On-Chain Proof</span>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ TABS ============ -->
+  <nav class="tabs" role="tablist" aria-label="Main views">
+    <button class="tab is-active" role="tab" aria-selected="true" aria-controls="panel-intake" id="tab-intake" data-tab="intake">
+      <i data-lucide="radar"></i> Intake &amp; Live Pipeline Inspector
+    </button>
+    <button class="tab" role="tab" aria-selected="false" aria-controls="panel-lookup" id="tab-lookup" data-tab="lookup">
+      <i data-lucide="gavel"></i> Judicial &amp; Verification Lookup
+    </button>
+  </nav>
+
+  <main class="main" role="main">
+    <!-- ===== TAB A: INTAKE & LIVE PIPELINE ===== -->
+    <section class="panel is-active" role="tabpanel" id="panel-intake" aria-labelledby="tab-intake">
+      <div class="grid-intake">
+        <!-- LEFT: Intake -->
+        <div class="card card--intake">
+          <div class="card__head">
+            <h2 class="card__title"><i data-lucide="upload-cloud"></i> Evidence Intake</h2>
+            <span class="card__hint">Drag &amp; drop or browse</span>
+          </div>
+
+          <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Upload evidence image">
+            <input type="file" id="fileInput" accept="image/*" hidden />
+            <div class="dropzone__empty" id="dropzoneEmpty">
+              <i data-lucide="image-plus"></i>
+              <p class="dropzone__title">Drop forensic asset here</p>
+              <p class="dropzone__sub">PNG · JPG · WEBP — evidence chain begins on ingest</p>
+            </div>
+            <div class="dropzone__preview" id="dropzonePreview" hidden>
+              <img id="previewImg" alt="Uploaded evidence preview" />
+              <button type="button" class="dropzone__clear" id="clearFile" aria-label="Remove file">
+                <i data-lucide="x"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="meta-pills" id="metaPills" hidden>
+            <span class="meta-pill"><i data-lucide="file"></i> <span id="metaName">—</span></span>
+            <span class="meta-pill"><i data-lucide="hard-drive"></i> <span id="metaSize">—</span></span>
+            <span class="meta-pill"><i data-lucide="ruler"></i> <span id="metaDims">—</span></span>
+            <span class="meta-pill"><i data-lucide="file-type"></i> <span id="metaType">—</span></span>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="contributor">
+              <i data-lucide="building-2"></i> Contributor / Entity <span style="color: var(--crimson-hot, #ef4444);">*</span>
+            </label>
+            <input type="text" id="contributor" class="field__input" placeholder="e.g. Company A · Precinct 14 · Underwriter Node" autocomplete="off" required />
+          </div>
+
+          <button class="btn btn--primary btn--run" id="runBtn" disabled>
+            <span class="btn__spinner" aria-hidden="true"></span>
+            <i data-lucide="play" class="btn__ico"></i>
+            <span class="btn__label">Run Forensic Pipeline</span>
+          </button>
+
+          <p class="endpoint-note">
+            <i data-lucide="plug"></i> POST <code>/process-pipeline</code>
+          </p>
+        </div>
+
+        <!-- RIGHT: Telemetry -->
+        <div class="card card--telemetry">
+          <div class="card__head">
+            <h2 class="card__title"><i data-lucide="activity"></i> Analysis Telemetry</h2>
+            <span class="status-badge status-badge--idle" id="statusBadge">AWAITING INTAKE</span>
+          </div>
+
+          <!-- Empty state -->
+          <div class="telemetry-empty" id="telemetryEmpty">
+            <i data-lucide="satellite-dish"></i>
+            <p>No active analysis. Ingest an asset and specify an entity to run the pipeline.</p>
+          </div>
+
+          <!-- Results -->
+          <div class="telemetry-body" id="telemetryBody" hidden>
+            <!-- Gauges -->
+            <div class="gauges">
+              <div class="gauge">
+                <span class="gauge__label">Prediction</span>
+                <span class="gauge__value" id="predVal">—</span>
+              </div>
+              <div class="gauge gauge--conf">
+                <span class="gauge__label">Confidence</span>
+                <div class="conf-ring" id="confRing" style="--pct:0">
+                  <span class="conf-ring__num" id="confVal">0%</span>
+                </div>
+              </div>
+              <div class="gauge">
+                <span class="gauge__label">Model Version</span>
+                <span class="gauge__value gauge__value--mono" id="modelVal">—</span>
+              </div>
+            </div>
+
+            <!-- Hashes -->
+            <div class="hash-block">
+              <div class="hash-row">
+                <span class="hash-row__label"><i data-lucide="hash"></i> SHA-256</span>
+                <code class="hash-row__val" id="sha256Val">—</code>
+                <button class="copy-btn" data-copy-target="sha256Val" aria-label="Copy SHA-256"><i data-lucide="copy"></i></button>
+              </div>
+              <div class="hash-row">
+                <span class="hash-row__label"><i data-lucide="fingerprint"></i> pHash</span>
+                <code class="hash-row__val" id="phashVal">—</code>
+                <button class="copy-btn" data-copy-target="phashVal" aria-label="Copy pHash"><i data-lucide="copy"></i></button>
+              </div>
+            </div>
+
+            <!-- Forensic message -->
+            <div class="callout" id="callout">
+              <i data-lucide="info" class="callout__ico"></i>
+              <div class="callout__body">
+                <span class="callout__title" id="calloutTitle">Forensic Verdict</span>
+                <p class="callout__msg" id="calloutMsg">—</p>
+              </div>
+            </div>
+
+            <!-- Blockchain receipt -->
+            <div class="receipt" id="receipt">
+              <div class="receipt__head">
+                <i data-lucide="link"></i> Blockchain Transaction Receipt
+              </div>
+              <div class="receipt__row">
+                <code class="receipt__hash" id="txVal">—</code>
+                <button class="copy-btn" data-copy-target="txVal" aria-label="Copy transaction hash"><i data-lucide="copy"></i></button>
+              </div>
+              <a class="receipt__link" id="txLink" href="#" target="_blank" rel="noopener noreferrer">
+                <i data-lucide="external-link"></i> View on Block Explorer
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TAB B: JUDICIAL LOOKUP ===== -->
+    <section class="panel" role="tabpanel" id="panel-lookup" aria-labelledby="tab-lookup" hidden>
+      <div class="card card--lookup">
+        <div class="card__head">
+          <h2 class="card__title"><i data-lucide="search-check"></i> Judicial Verification Portal</h2>
+          <span class="card__hint">Independent on-chain audit</span>
+        </div>
+        <p class="lookup__intro">
+          Auditors and officers of the court may independently verify evidence provenance. Paste a
+          <b>Transaction Hash</b> or <b>Image Hash</b> to retrieve immutable on-chain proof.
+        </p>
+
+        <div class="lookup__search">
+          <div class="field field--search">
+            <i data-lucide="search" class="field__ico"></i>
+            <input type="text" id="lookupInput" class="field__input" placeholder="0x5FbDB2315678afecb367f032d93F642f64180aa3  ·  or  ·  614a2fb6..." autocomplete="off" />
+          </div>
+          <button class="btn btn--primary" id="lookupBtn">
+            <span class="btn__spinner" aria-hidden="true"></span>
+            <i data-lucide="database" class="btn__ico"></i>
+            <span class="btn__label">Query Ledger</span>
+          </button>
+        </div>
+
+        <div class="lookup__result" id="lookupResult" hidden></div>
+      </div>
+    </section>
+
+    <!-- ===== BATCH INGESTION & RISK ASSESSMENT ===== -->
+    <section class="card" style="margin-top: 24px;" aria-label="Bulk Dataset Ingestion">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <div>
+          <h3 style="margin: 0; color: #38bdf8; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+            <i data-lucide="layers"></i> Bulk Dataset Ingestion &amp; Entity Risk Profiler
+          </h3>
+          <p style="margin: 4px 0 0 0; font-size: 13px; color: #94a3b8;">Upload bulk evidence batches to evaluate systemic entity integrity and compliance ratios.</p>
+        </div>
+        <span id="batch-badge" class="badge" style="background: #1e293b; color: #94a3b8; border: 1px solid #334155; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700;">STANDBY</span>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 20px; align-items: start;">
+        <div>
+          <div class="field">
+            <label class="field__label" for="batch-contributor">
+              <i data-lucide="building-2"></i> Submitting Agency / Contributor
+            </label>
+            <input type="text" id="batch-contributor" class="field__input" placeholder="e.g. Municipal Traffic Department" autocomplete="off" />
+          </div>
+
+          <div id="batch-dropzone" style="border: 2px dashed #334155; border-radius: 8px; padding: 24px; text-align: center; cursor: pointer; background: #0b1329; margin-top: 12px; transition: border-color 0.2s;">
+            <input type="file" id="batch-file-input" multiple accept="image/*" style="display: none;" />
+            <div style="font-size: 28px; margin-bottom: 8px; color: #38bdf8;"><i data-lucide="folder-up"></i></div>
+            <strong style="color: #f8fafc; font-size: 13px; display: block;">Select Multiple Assets</strong>
+            <p style="margin: 4px 0 0 0; font-size: 11px; color: #64748b;">Drop folder contents or select multi-file JPG/PNG</p>
+          </div>
+
+          <button id="btn-run-batch" class="btn btn--primary" style="width: 100%; margin-top: 14px;">
+            <i data-lucide="play-circle"></i> Run Forensic Batch Audit
+          </button>
+
+          <div id="batch-progress-container" style="display: none; margin-top: 14px;">
+            <div style="display: flex; justify-content: space-between; font-size: 11px; color: #94a3b8; margin-bottom: 4px;">
+              <span id="batch-progress-status">Processing assets...</span>
+              <span id="batch-progress-percent">0%</span>
+            </div>
+            <div style="background: #1e293b; border-radius: 4px; height: 8px; overflow: hidden;">
+              <div id="batch-progress-bar" style="background: #38bdf8; width: 0%; height: 100%; transition: width 0.15s ease;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DYNAMIC RISK SCORECARD -->
+        <div id="batch-scorecard" style="background: #0f172a; border: 1px solid #1e293b; border-radius: 8px; padding: 18px; min-height: 220px;">
+          <div style="font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 0.5px;">
+            Entity Risk Assessment Telemetry
+          </div>
+
+          <div id="scorecard-empty-state" style="text-align: center; padding: 40px 10px; color: #475569;">
+            <i data-lucide="bar-chart-3" style="width: 32px; height: 32px; margin-bottom: 8px; stroke: #334155;"></i>
+            <p style="margin: 0; font-size: 13px;">No active batch execution. Upload a set of assets to generate compliance metrics.</p>
+          </div>
+
+          <div id="scorecard-content" style="display: none;">
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 16px;">
+              <div style="background: #111827; padding: 12px; border-radius: 6px; border: 1px solid #1f2937;">
+                <small style="color: #94a3b8; font-size: 11px;">COMPLIANCE RATE</small>
+                <div id="metric-compliance" style="font-size: 20px; font-weight: 800; color: #10b981; margin-top: 4px;">0%</div>
+              </div>
+              <div style="background: #111827; padding: 12px; border-radius: 6px; border: 1px solid #1f2937;">
+                <small style="color: #94a3b8; font-size: 11px;">RISK TIER</small>
+                <div id="metric-tier" style="font-size: 18px; font-weight: 800; color: #f59e0b; margin-top: 4px;">--</div>
+              </div>
+              <div style="background: #111827; padding: 12px; border-radius: 6px; border: 1px solid #1f2937;">
+                <small style="color: #94a3b8; font-size: 11px;">PENALTY INDEX</small>
+                <div id="metric-penalty" style="font-size: 20px; font-weight: 800; color: #ef4444; margin-top: 4px;">0.0</div>
+              </div>
+            </div>
+
+            <div style="font-size: 11px; font-weight: 600; color: #94a3b8; text-transform: uppercase; margin-bottom: 8px;">Breakdown Matrix</div>
+            <div id="batch-matrix-pills" style="display: flex; flex-wrap: wrap; gap: 8px;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== LIVE AUDIT TRAIL ===== -->
+    <section class="card card--audit" style="margin-top: 24px;" aria-label="Live audit trail">
+      <div class="card__head">
+        <h2 class="card__title"><i data-lucide="scroll-text"></i> Live Audit Trail</h2>
+        <div class="card__head-actions">
+          <span class="card__hint" id="auditMeta">Latest 15 records</span>
+          <button class="btn btn--ghost btn--sm" id="refreshBtn">
+            <i data-lucide="refresh-cw"></i> Refresh
+          </button>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table class="audit-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Evidence</th>
+              <th>Timestamp</th>
+              <th>Contributor</th>
+              <th>Asset</th>
+              <th>Detection</th>
+              <th>Status</th>
+              <th>Tx Hash</th>
+              <th>Audit</th>
+            </tr>
+          </thead>
+          <tbody id="auditBody"></tbody>
+        </table>
+        <div class="table-empty" id="tableEmpty">
+          <i data-lucide="inbox"></i>
+          <p>No verification records yet.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>GOD'S EYE · Cyber-Forensic Integrity Layer</span>
+    <span class="footer__mono" id="clock">--:--:--</span>
+  </footer>
+
+  <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+  <!-- Evidence Full-Size Preview Modal -->
+  <div class="evidence-modal-backdrop" id="evidence-modal" onclick="closeEvidenceModal()">
+    <img class="evidence-modal-img" id="evidence-modal-img" src="" alt="Evidence Inspection Preview" />
+    <div class="evidence-modal-meta" id="evidence-modal-caption"></div>
+    <small style="color: #64748b; margin-top: 8px;">Click anywhere to close preview</small>
+  </div>
+
+  <script>
+    function openEvidenceModal(src, title, status) {
+      const modal = document.getElementById('evidence-modal');
+      const img = document.getElementById('evidence-modal-img');
+      const cap = document.getElementById('evidence-modal-caption');
+      if (modal && img && cap) {
+        img.src = src;
+        cap.innerHTML = `<strong>${title}</strong> &bull; Status: <span style="color:#38bdf8">${status}</span>`;
+        modal.style.display = 'flex';
+      }
+    }
+
+    function closeEvidenceModal() {
+      const modal = document.getElementById('evidence-modal');
+      if (modal) {
+        modal.style.display = 'none';
+      }
+    }
+  </script>
+
+  <script src="/static/script.js" defer></script>
 </body>
 </html>

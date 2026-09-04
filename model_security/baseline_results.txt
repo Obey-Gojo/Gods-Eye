@@ -1,0 +1,27 @@
+GODSEYE MODEL SECURITY - BASELINE TEST
+=======================================
+
+Model:
+yolo11n.pt
+
+Model SHA-256:
+0ebbc80d4a7680d14987a577cd21342b65ecfd94632bd9a8da63ae6417644ee1
+
+Test Image:
+test_car_1.jpeg
+
+Detection Results:
+
+1. Class: person
+   Confidence: 0.8816
+   Bounding Box:
+   [369.7366, 114.7460, 580.1795, 394.1998]
+
+2. Class: motorcycle
+   Confidence: 0.7597
+   Bounding Box:
+   [246.0963, 169.7046, 569.4876, 508.6123]
+
+Inference:
+The trusted YOLO model successfully detected objects
+in the test image under normal conditions.
